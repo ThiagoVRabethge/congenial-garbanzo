@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
+cors = CORS(app, origins=['http://localhost:5173', 'https://example.com'])
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
