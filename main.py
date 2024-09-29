@@ -26,6 +26,11 @@ class User(db.Model):
         return {"id": self.id, "name": self.name, "email": self.email}
 
 
+@app.route("/", methods=["GET"])
+def root():
+    return jsonify({"hello": "world"})
+
+
 @app.route("/users", methods=["POST"])
 def create_user():
     data = request.json
