@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-cors = CORS(app, origins=['http://localhost:5173', 'https://example.com'])
+cors = CORS(app, origins=["http://localhost:5173", "https://example.com"])
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -36,11 +36,20 @@ def root():
 
 @app.route("/users", methods=["POST"])
 def create_user():
-    data = request.json
-    new_user = User(name=data["name"], email=data["email"])
-    db.session.add(new_user)
-    db.session.commit()
-    return jsonify(new_user.to_dict()), 201
+    try:
+        data = request.json
+        new_user = User(name=data["name"], email=data["email"])
+        db.session.add(new_user)
+        db.session.commit()
+        return (
+            jsonify(
+                {"message": "User created successfully", "user": new_user.to_dict()}
+            ),
+            201,
+        )
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 400
 
 
 @app.route("/users", methods=["GET"])
