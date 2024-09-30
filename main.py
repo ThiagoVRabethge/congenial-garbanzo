@@ -10,7 +10,7 @@ cors = CORS(app, origins=["http://localhost:5173", "https://example.com"])
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, "app.db")
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://boinho_user:Px3OhuCPKnRHGOKQtOWPMlFA5Owb20kl@dpg-crsvpcd2ng1s73bs9o2g-a.oregon-postgres.render.com/boinho"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
