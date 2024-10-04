@@ -6,11 +6,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-cors = CORS(app, origins=["https://fantastic-bassoon-nine.vercel.app"])
+cors = CORS(app, origins=["*"])
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://boinho_user:Px3OhuCPKnRHGOKQtOWPMlFA5Owb20kl@dpg-crsvpcd2ng1s73bs9o2g-a.oregon-postgres.render.com/boinho"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://example_vnum_user:9vZyhwOkEDLD2FP1fyVlSnoyVdKEr0Rh@dpg-crvfq8m8ii6s73e7tt00-a.oregon-postgres.render.com/example_vnum"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
